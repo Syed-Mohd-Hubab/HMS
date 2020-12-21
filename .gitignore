@@ -1,0 +1,3 @@
+*.prettierrc/
+*.zip/
+node_modules/

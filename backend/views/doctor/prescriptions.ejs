@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <br>
+            <div class="panel panel-default panel-table">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col col-xs-6">
+                    <h2 class="panel-title">Prescriptions Given:</h2>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body">
+                <table class="table table-striped table-bordered table-list">
+                  <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Appointment Time</th>
+                        <th>Patient Name</th>
+                        <th>Message</th>
+                        <th>Disease</th>
+                        <th>Treatment</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                        <% rows2.forEach((row, i) => { %>
+                          <tr>
+                            <!-- <td align="center"> </td> -->
+                            <td><%=i+1 %></td>
+                            <td><%=row.Appointment_Time.toString().slice(0, 24) %></td>
+                            <%console.log("in presc.ejs: "+row.Appointment_Time ) %>
+                            <td><%=row.Pname %></td>
+                            <td><%=row.message %></td>
+                            <td><%=row.Disease %></td>
+                            <td><%=row.Treatment %></td>
+                          </tr>
+                        <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %> 

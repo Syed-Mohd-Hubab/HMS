@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <br>
+            <div class="panel panel-default panel-table">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col col-xs-6">
+                    <h2 class="panel-title">Appointments:</h2>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body">
+                <table class="table table-striped table-bordered table-list">
+                  <thead>
+                    <tr>
+                        <th> <center> <em class="fa fa-cog"> </center></em></th>
+                        <th class="hidden-xs">#</th>
+                        <th>Department</th>
+                        <th>Message</th>
+                        <th>Time Assigned</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                          <% appointments.forEach((appointment, i) => { %>
+                            <tr>
+                              <td align="center">
+
+                                <% id=appointment.Appointment_id %>
+                                
+                                <% if(appointment.Time_assigned == null) {%>
+                                  <button type="button" title="Please assign a time first !" disabled>Prescribe</button>
+                                  <% }else{ %>
+                                    <a href="prescribe/<%=id%>" class="btn btn-primary" >Prescribe <em class="fa fa-pencil"></em></a>
+                                  <% } %>
+                              </td>
+                              <td class="hidden-xs"><%=i+1%></td>
+                              <td> <%=appointment.department %> </td>
+                              <td> <%=appointment.message %> </td>
+                              <td> 
+                                <% if(appointment.Time_assigned == null) {%>
+                                  <a href="appointments/assigntime/<%=id%>" class="btn btn-danger"><i> Not assigned</i></a>
+                                <% }else{%>
+                                  <%=appointment.Time_assigned %>
+                                <% } %>
+                              </td>
+                            </tr>
+                          <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %> 

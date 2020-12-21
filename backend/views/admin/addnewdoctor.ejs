@@ -1,0 +1,92 @@
+<%- include('../partials/header') %>
+<!-- ADD NEW DOCTOR -->
+<section id="appointment" data-stellar-background-ratio="3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-6">
+				<!--ADD NEW DOCTOR FORM-->
+				<form id="appointment-form" role="form" method="post" action="/admin/addnewdoctor">
+					<div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+						<h2>Add New Doctor</h2>
+					</div>
+					
+					<div class="wow fadeInUp" data-wow-delay="0.8s">
+						<div class="col-md-4 col-sm-6">
+							<label>First Name*</label>
+							<input type="text" class="form-control" name="fname" placeholder="First Name" required>
+						</div>
+						
+						<div class="col-md-4 col-sm-6">
+							<label>Middle Name</label>
+							<input type="text" class="form-control" name="mname" placeholder="Middle Name">
+						</div>
+						
+						<div class="col-md-4 col-sm-6">
+							<label>Last Name*</label>
+							<input type="text" class="form-control"  name="lname" placeholder="Last Name" required>
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<label>Email*</label>
+							<input type="email" class="form-control" name="email" placeholder="Your Email" required>
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<label>Password*</label>
+							<input type="password" name="password" placeholder="Password" class="form-control" required>
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<label>Select Gender*</label>
+							<select name="gender" class="form-control" required>
+								<option>Male</option>
+								<option>Female</option>
+								<option>Prefer not to say</option>
+							</select>
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<label>Specialization*</label>
+							<input type="text" name="specialization" placeholder="specialization" class="form-control" required>
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<label>Consultancy Fee*</label>
+							<input type="text" onkeypress="return event.charCode > 47 && event.charCode < 58;" pattern="[0-9]+" name="fee" placeholder="fee" class="form-control" required>
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<label>Phone Number*</label>
+							<input type="text" onkeypress="return event.charCode > 47 && event.charCode < 58;" pattern="[0-9]+" name="contact" placeholder="Phone" class="form-control" required>
+						</div>
+						
+						<div class="col-md-3 col-sm-3">
+							<label>Start Time:</label>
+							<input type="time" name="start" class="form-control">
+						</div>
+						
+						<div class="col-md-3 col-sm-3">
+							<label>End Time:</label>
+							<input type="time" name="end" class="form-control">
+						</div>
+						
+						<div class="col-md-3 col-sm-3">
+							<label>Priority Start Time:</label>
+							<input type="time" name="pstart" class="form-control">
+						</div>
+						
+						<div class="col-md-3 col-sm-3">
+							<label>Priority End Time:</label>
+							<input type="time" name="pend" class="form-control">
+						</div>
+						
+						<div class="col-md-6 col-sm-6">
+							<button type="submit" class="form-control" id="cf-submit">Submit Button</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<%- include('../partials/footer') %>

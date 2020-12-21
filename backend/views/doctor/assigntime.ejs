@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<br>
+			<div class="panel panel-default panel-table">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col col-xs-6">
+							<h2 class="panel-title">Assigning Time for <%=row1[0].Pname%> </h2>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-body">
+					
+					<table class="table table-striped table-bordered table-list">
+						<thead>
+							<tr>
+								<!-- <th> <center> <em class="fa fa-cog"> </center></em></th>
+									<th class="hidden-xs">#</th> -->
+									<th>Start Time</th>
+									<th>End Time</th>
+									<th>Priotity Time Start</th>
+									<th>Priority Time End</th>
+								</tr> 
+							</thead>
+							<tbody>
+								<td><%=row2[0].TimeIn %></td>
+								<td><%=row2[0].TimeOut %></td>
+								<td><%=row2[0].PriorityStart %></td>
+								<td><%=row2[0].PriorityEnd %></td>
+							</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+		<form id="appointment-form" role="form" method="post" action="/doctor/appointments/assigntime/<%=row1[0].Appointment_id %>">
+			<input type="hidden" name="_method" value="PUT">
+			<div class="col-md-3 col-sm-3">
+				<label>Choose Appointment Time: </label>
+			</div>
+			<div class="col-sm-3">
+				<input type="time" name="start" class="form-control">
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<button type="submit" class="form-control btn btn-primary" id="cf-submit">Submit</button>
+			</div>
+		</form>
+</div>
+<%- include('../partials/footer') %> 

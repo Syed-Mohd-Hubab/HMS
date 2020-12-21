@@ -1,0 +1,80 @@
+<%- include('../partials/header') %>
+     <!-- DOCTOR PROFILE -->
+    <section id="appointment" data-stellar-background-ratio="3">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-6">
+                         <!--DOCTOR-->
+                         <form id="appointment-form" role="form" method="post" action="/doctor/profile">
+                              <!-- SECTION TITLE -->
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3>Hello <%=user.Fname%> <%=user.Lname%></h3>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                   <input type="hidden" name="_method" value="PUT">
+                                   <div class="col-md-4 col-sm-6">
+                                        <label for="first name">First Name*</label>
+                                        <input type="text" class="form-control" name="fname" placeholder="First Name" value="<%=user.Fname%> " required>
+                                   </div>
+
+                                   <div class="col-md-4 col-sm-6">
+                                        <label for="middle name">Middle Name</label>
+                                        <input type="text" class="form-control" name="mname" placeholder="Middle Name" value="<%=user.Mname%>">
+                                   </div>
+
+                                   <div class="col-md-4 col-sm-6">
+                                        <label for="last name">Last Name*</label>
+                                        <input type="text" class="form-control"  name="lname" placeholder="Last Name" value="<%=user.Lname%>" required>
+                                   </div>
+
+                                   <!-- <div class="col-md-6 col-sm-6">
+                                        <label for="email">Email*</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" value="<%=user.Email%>" required>
+                                   </div> -->
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <label for="specialization">Specialization*</label>
+                                        <input type="text" name="specialization" placeholder="specialization" value="<%=user.Specialization%>" class="form-control" required>
+                                   </div>
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <label for="fee">Consultancy Fee*</label>
+                                        <input type="text" onkeypress="return event.charCode > 47 && event.charCode < 58;" pattern="[0-9]+" name="fee"placeholder="fee" value="<%=user.Consultation_fee%>" class="form-control" required>
+                                   </div>
+
+                                   <!-- <div class="col-md-6 col-sm-6">
+                                        <label>Phone Number*</label>
+                                        <input type="text" onkeypress="return event.charCode > 47 && event.charCode < 58;" pattern="[0-9]+" name="contact" placeholder="Phone" value="<%=user.Contact%>" class="form-control" required>
+                                   </div> -->
+
+                                   <div class="col-md-3 col-sm-3">
+                                        <label>Start Time:</label>
+                                        <input type="time" name="start" value="<%=time.TIMEIN.substring(0,5)%>" class="form-control">
+                                   </div>
+                                   
+                                   <div class="col-md-3 col-sm-3">
+                                        <label>End Time:</label>
+                                        <input type="time" name="end" value="<%=time.TIMEOUT.substring(0,5)%>" class="form-control">
+                                   </div>
+                                   
+                                   <div class="col-md-3 col-sm-3">
+                                        <label>Priority Start Time:</label>
+                                        <input type="time" name="pstart" value="<%=time.PRIORITYSTART.substring(0,5)%>" class="form-control">
+                                   </div>
+                                   
+                                   <div class="col-md-3 col-sm-3">
+                                        <label>Priority End Time:</label>
+                                        <input type="time" name="pend" value="<%=time.PRIORITYEND.substring(0,5)%>" class="form-control">
+                                   </div>
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <button type="submit" class="form-control" id="cf-submit">Submit Button</button>
+                                   </div>
+                              </div>
+                        </form>
+                    </div>
+               </div>
+          </div>
+     </section>
+<%- include('../partials/footer') %>

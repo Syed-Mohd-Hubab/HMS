@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+     <!-- MAKE AN APPOINTMENT -->
+     <section id="appointment" data-stellar-background-ratio="3">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-6">
+                         <!-- CONTACT FORM HERE -->
+                         <form id="appointment-form" role="form" method="POST" >
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.8s">
+                                   <h3>Dr. <%=user.Fname%> <%=user.Lname%>,
+                                   prescribing <u><%=patient[0].Fname%> <%=patient[0].Lname%></u></h3>
+                                   <h5>Patient ID: <%=patient[0].Patient_id%></h5>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="1s">
+                                   <input type="hidden" name="_method" value="PUT">
+                              <input type="hidden" name="Patient_id" value="<%patient[0].Patient_id%>" >
+                              <input type="hidden" name="Appointment_id" value="<%patient[0].Appointment_id%>">
+                                   <div class="col-md-6 col-sm-6">
+                                        <!-- <label for="select">Select Specialization</label>
+                                        <select name="specialization" class="form-control" placeholder="Specialization">
+                                        </select> 
+                                        <label for=""></label> -->
+                                   <!-- </div> -->
+                                        <!-- <br> -->
+                                   <!-- <div class="col-md-6 col-sm-6"> -->
+                                        <label>Message:
+                                             <p><%=patient[0].message %></p>
+                                        </label>
+                                        <br>
+                                        <textarea name="Disease" cols="74" rows="5" placeholder="Disease Diagnosed"></textarea>
+                                        <br>
+                                        <textarea name="Treatment" cols="74" rows="5" placeholder="Treatment Suggested"></textarea>
+                                        <br>
+                                        <p><b>Total Fees:</b> <%=user.Consultation_fee%> <i>rupees only</i> </p>
+                                        <button type="submit" class="form-control" id="cf-submit">Prescribe</button>
+                                        <br>
+                                   </div>
+                              </div>
+                        </form>
+                    </div>
+               </div>
+          </div>
+     </section>
+<%- include('../partials/footer') %>
