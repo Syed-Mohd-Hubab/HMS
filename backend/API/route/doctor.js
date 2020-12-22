@@ -162,7 +162,7 @@ router.get("/appointments/assigntime/:id", ensureDoctor, (req, res) => {
 });
 
 router.put("/appointments/assigntime/:id", ensureDoctor, (req, res) => {
-	connection.query("update appointment set Time_assigned=? where appointment_id = ?", [req.body.start, req.params.id], (err, result) =>{
+	connection.query("update appointment set Time_assigned=?, Time_Assigned_day = ?, Time_Assigned_date=?, Doctor_id=? where appointment_id = ?", [req.body.start, req.body.day, req.body.date, req.user.Doctor_id, req.params.id], (err, result) =>{
 		if(err){
 			console.log(err)
 			res.redirect("/doctor/dashboard")
