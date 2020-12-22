@@ -40,13 +40,30 @@
 	<br>
 		<form id="appointment-form" role="form" method="post" action="/doctor/appointments/assigntime/<%=row1[0].Appointment_id %>">
 			<input type="hidden" name="_method" value="PUT">
-			<div class="col-md-3 col-sm-3">
+			<div class="" style="width: 50%; margin: 0 auto;">
 				<label>Choose Appointment Time: </label>
-			</div>
-			<div class="col-sm-3">
+				<!-- </div> -->
+				<!-- <div class="col-sm-3"> -->
 				<input type="time" name="start" class="form-control">
-			</div>
-			<div class="col-md-6 col-sm-6">
+				<!-- </div> -->
+				<br>
+				<!-- <div class="col-md-3 col-sm-3"> -->
+				<label>Choose Day: </label>
+				<select name="day" required>
+					<option>Monday</option>
+					<option>Tuesday</option>
+					<option>Wednesday</option>
+					<option>Thursday</option>
+					<option>Friday</option>
+					<option>Saturday</option>
+					<option>Sunday</option>
+				</select>
+				<br>
+				<label>Date: </label>
+				<input type="date" name="date" class="form-control">
+				<!-- </div> -->
+				<!-- <div class="col-md-6 col-sm-6"> -->
+				<br> <br>
 				<button type="submit" class="form-control btn btn-primary" id="cf-submit">Submit</button>
 			</div>
 		</form>
