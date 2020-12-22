@@ -1,3 +1,2 @@
-*.prettierrc/
-*.zip/
 node_modules/
+*.prettierrc
