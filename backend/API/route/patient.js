@@ -52,7 +52,7 @@ router.post('/appointmentbook', ensurePatient, (req, res, next) => {
                     res.redirect('/patient/dashboard')
                 }
                 else{
-                    req.flash('success', 'Appointment posted successfully')
+                    req.flash('success', 'Appointment posted, please check the assigned time in Upcoming Appointments Tab')
                     console.log("Appointment post: "+rows)
                     res.redirect('/patient/dashboard')
                 }
@@ -61,14 +61,38 @@ router.post('/appointmentbook', ensurePatient, (req, res, next) => {
 
 })
 
-router.get('/allappointments', ensurePatient, (req, res, next) => {
-    connection.query("select * from appointment where patient_id = ? ", [req.user.Patient_id], (err, rows) => {
+router.get('/upcomingappointments', ensurePatient, (req, res, next) => {
+    connection.query("select a.*, CONCAT(d.Fname, ' ', d.Lname) as Dname from appointment a, doctor d where patient_id = ? and a.Not_pending=false and a.Doctor_id = d.Doctor_id ;", [req.user.Patient_id], (err, rows) => {
         if(err){
             console.log("ERR:"+err)
             res.redirect('/patient/dashboard')
         }else{
-            console.log("Showing all prescriptions")
-            res.render('../views/patient/oldappointments.ejs', {rows:rows})
+            console.log("Showing upcoming appointments: "+rows)
+            res.render('../views/patient/upcomingappointments.ejs', {rows:rows})
+        }
+    })
+})
+
+router.get('/pendingappointments', ensurePatient, (req, res, next) =>{
+    connection.query("Select * from appointment where Time_assigned is null and patient_id = ?", [req.user.Patient_id], (err, rows) =>{
+        if(err){
+            console.error(err);
+            res.redirect('/patient/dashboard')
+        }else{
+            console.log("Showing pending appointments: "+rows)
+            res.render('../views/patient/pendingappointments.ejs', {rows:rows})
+        }
+    })
+})
+
+router.get('/prescriptions', ensurePatient, (req, res, next) =>{
+    connection.query("Select a.*, CONCAT(d.Fname, ' ', d.Lname) as Dname from appointment a, doctor d where a.doctor_id=d.doctor_id and Patient_id=? and Not_pending=true;", [req.user.Patient_id], (err, rows) =>{
+        if(err){
+            console.log(err)
+            res.redirect('/patient/dashboard')
+        }else{
+            console.log("Showing prescriptions: "+rows)
+            res.render('../views/patient/prescriptions.ejs', {rows:rows})
         }
     })
 })
