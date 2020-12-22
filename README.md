@@ -1,2 +1,2 @@
 # HMS
-Hospital Management System using NodeJS, ExpressJS &amp; mySQL 
+Hospital Management System using NodeJS, ExpressJS &amp; MySQL. 
