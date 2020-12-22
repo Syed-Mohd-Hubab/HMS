@@ -42,10 +42,13 @@ CREATE TABLE Appointment
   (
     Appointment_id     	VARCHAR(100) PRIMARY KEY not null,
     Appointment_Time	DATETIME default NULL,
-    MESSAGE		varchar(300),
+    message		varchar(300),
     Time_assigned 	time,
+    Time_assigned_day  varchar(25) default null,
+    Time_assigned_date varchar(40) default null,
     Not_pending         bool default false,
     Disease            	VARCHAR(20) NOT NULL,
+    department varchar(50) DEFAULT NULL,
     Treatment          	VARCHAR(30) NOT NULL,
     Total_fee          	INTEGER NOT NULL,
     Doctor_id   		VARCHAR(100) NOT NULL,
@@ -56,7 +59,6 @@ CREATE TABLE Appointment
 CREATE TABLE Doctortime
   (
     Doctor_ID	  VARCHAR(100) NOT NULL,
-    DateTime_id   VARCHAR(100) PRIMARY KEY,
     TimeIn        TIME NOT NULL,
     TimeOut       TIME NOT NULL,
     PriorityStart TIME NOT NULL,
@@ -77,19 +79,9 @@ CREATE TABLE InPatient
     TimeIn          TIME NOT NULL,
     TimeOut         TIME NOT NULL,
     Fee             INTEGER,
-    #BloodBank_Blood_id INTEGER,
     Room_id       	INTEGER NOT NULL,
     Doctor_ID 		VARCHAR(100) NOT NULL,
     FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID),
     FOREiGN KEY(Patient_ID) REFERENCES Patient(Patient_ID),
     FOREiGN KEY(Room_ID) REFERENCES Room(Room_ID)
    );
-  
-    #drop table if exists BloodBank 
---   CREATE TABLE BloodBank
---   (
---     Blood_id      INTEGER auto_increment primary key,
---     Blood_Group   VARCHAR(10) ,
---     No_of_samples INTEGER
---   );
-
