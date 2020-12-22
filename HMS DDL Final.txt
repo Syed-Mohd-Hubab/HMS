@@ -1,0 +1,95 @@
+create database HMS;
+use HMS;
+CREATE TABLE HAdmin
+  (
+    Admin_id           	VARCHAR(100) PRIMARY KEY,
+    Fname            	VARCHAR(50) NOT NULL,
+    Mname				VARCHAR(50),
+    Lname				VARCHAR(50) NOT NULL,
+    Email               VARCHAR(40) UNIQUE NOT NULL,
+    Pass             	VARCHAR(100) NOT NULL
+  );
+
+CREATE TABLE Doctor
+  (
+    Doctor_id           VARCHAR(100) PRIMARY KEY,
+    Fname            	VARCHAR(50) NOT NULL,
+    Mname				VARCHAR(50),
+    Lname				VARCHAR(50) NOT NULL,
+    Email               VARCHAR(40) UNIQUE NOT NULL,
+    Pass             	VARCHAR(100) NOT NULL,
+    Contact             VARCHAR(20) UNIQUE NOT NULL,
+    Gender              VARCHAR(20) NOT NULL,
+    Specialization      VARCHAR(40) NOT NULL,
+    Consultation_fee    INTEGER NOT NULL
+  );
+  
+CREATE TABLE Patient
+  (
+    Patient_id  	VARCHAR(100) PRIMARY KEY,
+    Fname 			VARCHAR(50) NOT NULL,
+    Mname   		VARCHAR(50),
+    Lname 			VARCHAR(50) NOT NULL,
+    Email       	VARCHAR(40) UNIQUE NOT NULL,
+    Pass    		VARCHAR(100) NOT NULL,
+    Contact     	VARCHAR(20) UNIQUE NOT NULL,
+    Gender      	VARCHAR(20) NOT NULL,
+    DOB				DATE NOT NULL,
+    Blood_group 	VARCHAR(4) NOT NULL
+  );
+  
+CREATE TABLE Appointment
+  (
+    Appointment_id     	VARCHAR(100) PRIMARY KEY not null,
+    Appointment_Time	DATETIME default NULL,
+    MESSAGE		varchar(300),
+    Time_assigned 	time,
+    Not_pending         bool default false,
+    Disease            	VARCHAR(20) NOT NULL,
+    Treatment          	VARCHAR(30) NOT NULL,
+    Total_fee          	INTEGER NOT NULL,
+    Doctor_id   		VARCHAR(100) NOT NULL,
+    Patient_id 			VARCHAR(100) NOT NULL,
+    FOREIGN KEY(Patient_ID) REFERENCES Patient(Patient_ID)
+  );
+  
+CREATE TABLE Doctortime
+  (
+    Doctor_ID	  VARCHAR(100) NOT NULL,
+    DateTime_id   VARCHAR(100) PRIMARY KEY,
+    TimeIn        TIME NOT NULL,
+    TimeOut       TIME NOT NULL,
+    PriorityStart TIME NOT NULL,
+    PriorityEnd   TIME NOT NULL,
+    FOREIGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID)
+  );
+  
+CREATE TABLE Room
+  (
+    Room_id        INTEGER AUTO_INCREMENT PRIMARY KEY,
+    Room_available BOOL DEFAULT true
+  );
+
+CREATE TABLE InPatient
+  (
+    Patient_id 	    VARCHAR(100) NOT NULL,
+    Descript        VARCHAR(4096),
+    TimeIn          TIME NOT NULL,
+    TimeOut         TIME NOT NULL,
+    Fee             INTEGER,
+    #BloodBank_Blood_id INTEGER,
+    Room_id       	INTEGER NOT NULL,
+    Doctor_ID 		VARCHAR(100) NOT NULL,
+    FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID),
+    FOREiGN KEY(Patient_ID) REFERENCES Patient(Patient_ID),
+    FOREiGN KEY(Room_ID) REFERENCES Room(Room_ID)
+   );
+  
+    #drop table if exists BloodBank 
+--   CREATE TABLE BloodBank
+--   (
+--     Blood_id      INTEGER auto_increment primary key,
+--     Blood_Group   VARCHAR(10) ,
+--     No_of_samples INTEGER
+--   );
+
