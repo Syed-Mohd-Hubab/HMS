@@ -1,4 +1,4 @@
 node_modules/
-.prettierrc
-.env
 /frontend assets/*
+*.prettierrc
+*.ENV
