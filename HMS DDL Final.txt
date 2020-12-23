@@ -83,7 +83,7 @@ CREATE TABLE InPatient
     TimeIn          TIME NOT NULL,
     TimeOut         TIME,
     Fee             INTEGER,
-    FORIEGN KEY(Appointment_id) REFERENCES Appointment(Appointment_id),
+    FOREiGN KEY(Appointment_id) REFERENCES Appointment(Appointment_id),
     FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID) on delete set null, 
     FOREiGN KEY(Patient_ID) REFERENCES Patient(Patient_ID),
     FOREiGN KEY(Room_ID) REFERENCES Room(Room_ID)
