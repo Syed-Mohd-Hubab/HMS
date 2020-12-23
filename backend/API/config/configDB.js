@@ -6,8 +6,5 @@ module.exports = {
         'password': 'fast',
         'database': 'hms',
         'stringifyObjects': 'Stringify',
-        // 'waitForConnections': 'true',
-        // 'connectionLimit': '100',
-        // 'queueLimit': '0', 
     }
 };
