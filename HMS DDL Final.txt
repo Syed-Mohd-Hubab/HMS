@@ -82,6 +82,8 @@ CREATE TABLE InPatient
     Fee             INTEGER,
     Room_id       	INTEGER NOT NULL,
     Doctor_ID 		VARCHAR(100) ,
+    Appointment_id varchar(100) NOT NULL,
+    FORIEGN KEY(Appointment_id) REFERENCES Appointment(Appointment_id),
     FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID) on delete set null, 
     FOREiGN KEY(Patient_ID) REFERENCES Patient(Patient_ID),
     FOREiGN KEY(Room_ID) REFERENCES Room(Room_ID)
