@@ -62,13 +62,21 @@ router.post('/appointmentbook', ensurePatient, (req, res, next) => {
 })
 
 router.get('/upcomingappointments', ensurePatient, (req, res, next) => {
-    connection.query("select a.*, CONCAT(d.Fname, ' ', d.Lname) as Dname from appointment a, doctor d where patient_id = ? and a.Not_pending=false and a.Doctor_id = d.Doctor_id ;", [req.user.Patient_id], (err, rows) => {
+    connection.query("select a.*, CONCAT(d.Fname, ' ', d.Lname) as Dname from appointment a, doctor d where patient_id = ? and a.Not_pending=false and a.Time_assigned is not null and a.Doctor_id is not null and a.Doctor_id = d.Doctor_id;", [req.user.Patient_id], (err, rows) => {
         if(err){
             console.log("ERR:"+err)
             res.redirect('/patient/dashboard')
-        }else{
-            console.log("Showing upcoming appointments: "+rows)
-            res.render('../views/patient/upcomingappointments.ejs', {rows:rows})
+        }else{            
+            connection.query("select * from appointment where patient_id=? and Time_assigned is not null and Doctor_id is null;", [req.user.Patient_id], (err, rows2) =>{
+            if(err){
+                console.log(err)
+                res.redirect("/patient/dashboard")
+            }
+            else{
+                console.log("Showing upcoming appointments: "+rows+" "+rows2)
+                res.render('../views/patient/upcomingappointments.ejs', {rows:rows, rows2:rows2})
+            }           
+            })
         }
     })
 })
