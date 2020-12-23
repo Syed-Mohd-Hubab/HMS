@@ -27,23 +27,69 @@
                   </thead>
 
                   <tbody>
-                          <tr>
                             <!-- <td align="center"> </td> -->
                             <% rows.forEach( (row, i) => { %>
-                            <td> <%=i+1 %> </td>
-                            <td> <%=row.Time_assigned %>, <%=row.Time_assigned_date%> (<%=row.Time_assigned_day%>) </td>
-                            <td> <%=row.Dname %> </td>
-                            <td> <%=row.department %> </td>
-                            <td> <%=row.message %> </td>
+                            <tr>
+                              <td> <%=i+1 %> </td>
+                              <td> <%=row.Time_assigned %>, <%=row.Time_assigned_date%> (<%=row.Time_assigned_day%>) </td>
+                              <td> <%=row.Dname %> </td>
+                              <td> <%=row.department %> </td>
+                              <td> <%=row.message %> </td>
+                            </tr>
                             <% }) %>
-                          </tr>
                   </tbody>
-
                 </table>
               </div>
             </div>
         </div>
     </div>
 </div>
+
+<% if(rows2.length>0) { %>
+<div class="container">
+  <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <br>
+          <div class="panel panel-default panel-table">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col col-xs-6">
+                  <h2 class="panel-title">Cancelled appointments:</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-list">
+
+                <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Appointment Time</th>
+                      <th>Department</th>
+                      <th>Message Given</th>
+                      <th>Reason</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <!-- <td align="center"> </td> -->
+                    <% rows.forEach( (row, i) => { %>
+                    <tr>
+                      <td> <%=i+1 %> </td>
+                      <td> <%=row.Time_assigned %>, <%=row.Time_assigned_date%> (<%=row.Time_assigned_day%>) </td>
+                      <td> <%=row.department %> </td>
+                      <td> <%=row.message %> </td>
+                      <td> Unfortunately, this doctor isn't available now. Please apply for a new appointment. </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<% } %>
 
 <%- include('../partials/footer') %> 
