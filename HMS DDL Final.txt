@@ -53,6 +53,7 @@ CREATE TABLE Appointment
     Total_fee          	INTEGER NOT NULL,
     Doctor_id   		VARCHAR(100) NOT NULL,
     Patient_id 			VARCHAR(100) NOT NULL,
+    FORIEGN KEY(Doctor_id) REFERENCES Doctor(Doctor_id) on delete set null,
     FOREIGN KEY(Patient_ID) REFERENCES Patient(Patient_ID)
   );
   
@@ -63,7 +64,7 @@ CREATE TABLE Doctortime
     TimeOut       TIME NOT NULL,
     PriorityStart TIME NOT NULL,
     PriorityEnd   TIME NOT NULL,
-    FOREIGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID)
+    FOREIGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID) on delete cascade
   );
   
 CREATE TABLE Room
@@ -77,11 +78,11 @@ CREATE TABLE InPatient
     Patient_id 	    VARCHAR(100) NOT NULL,
     Descript        VARCHAR(4096),
     TimeIn          TIME NOT NULL,
-    TimeOut         TIME NOT NULL,
+    TimeOut         TIME,
     Fee             INTEGER,
     Room_id       	INTEGER NOT NULL,
-    Doctor_ID 		VARCHAR(100) NOT NULL,
-    FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID),
+    Doctor_ID 		VARCHAR(100) ,
+    FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID) on delete set null, 
     FOREiGN KEY(Patient_ID) REFERENCES Patient(Patient_ID),
     FOREiGN KEY(Room_ID) REFERENCES Room(Room_ID)
    );
