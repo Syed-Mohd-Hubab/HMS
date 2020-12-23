@@ -1,0 +1,25 @@
+<%- include('../partials/header')  %> 
+    <!-- FORGET -->
+    <section id="appointment" data-stellar-background-ratio="3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                        <!-- ENTER EMAIL TO RECOVER PASSWORD -->
+                    <h3>Didn't get verification email?!<br>Don't panic just enter your email below</h3>
+                    <br>
+                    <form id="appointment-form" role="form" method="post" action="/authenticate/verifyaccount">
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="col-sm-12">
+                            <label>Email*</label>
+                            <input type="email" name="email" placeholder="Your Email" class="form-control" required>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <button type="submit" class="form-control" id="cf-submit">Submit Button</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+   </section>
+<%- include('../partials/footer') %> 
