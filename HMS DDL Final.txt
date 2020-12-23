@@ -77,8 +77,9 @@ CREATE TABLE InPatient
   (
     Appointment_id varchar(100) NOT NULL,
     Patient_id 	    VARCHAR(100) NOT NULL,
-    Doctor_ID 		VARCHAR(100) ,
+    Doctor_ID 		VARCHAR(100),
     Room_id       	INTEGER NOT NULL,
+    Department   	varchar(100) not null,
     Descript        VARCHAR(4096),
     TimeIn          TIME NOT NULL,
     TimeOut         TIME,
