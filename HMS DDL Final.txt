@@ -75,14 +75,14 @@ CREATE TABLE Room
 
 CREATE TABLE InPatient
   (
+    Appointment_id varchar(100) NOT NULL,
     Patient_id 	    VARCHAR(100) NOT NULL,
+    Doctor_ID 		VARCHAR(100) ,
+    Room_id       	INTEGER NOT NULL,
     Descript        VARCHAR(4096),
     TimeIn          TIME NOT NULL,
     TimeOut         TIME,
     Fee             INTEGER,
-    Room_id       	INTEGER NOT NULL,
-    Doctor_ID 		VARCHAR(100) ,
-    Appointment_id varchar(100) NOT NULL,
     FORIEGN KEY(Appointment_id) REFERENCES Appointment(Appointment_id),
     FOREiGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID) on delete set null, 
     FOREiGN KEY(Patient_ID) REFERENCES Patient(Patient_ID),
