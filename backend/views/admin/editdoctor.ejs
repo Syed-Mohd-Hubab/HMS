@@ -1,0 +1,70 @@
+<%- include('../partials/admin/header') %>
+     <!-- ADD NEW DOCTOR -->
+    <section id="appointment" data-stellar-background-ratio="3">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-6">
+                         <!--ADD NEW DOCTOR-->
+                         <form id="appointment-form" role="form" method="POST" action="/admin/editdoctor/<%=doctor.DOCTOR_ID%> ">
+                              <!-- SECTION TITLE -->
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                                   <h2>Edit <%=doctor.FNAME%> <%=doctor.LNAME%>'s Info</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                   <input type="hidden" name="_method" value="PUT">
+                                   <div class="col-md-4 col-sm-6">
+                                        <label for="first name">First Name*</label>
+                                        <input type="text" class="form-control" name="fname" value="<%=doctor.FNAME%>" placeholder="First Name" required>
+                                   </div>
+
+                                   <div class="col-md-4 col-sm-6">
+                                        <label for="middle name">Middle Name</label>
+                                        <input type="text" class="form-control" name="mname" value="<%=doctor.MNAME%>" placeholder="Middle Name">
+                                   </div>
+
+                                   <div class="col-md-4 col-sm-6">
+                                        <label for="last name">Last Name*</label>
+                                        <input type="text" class="form-control"  name="lname" value="<%=doctor.LNAME%>" placeholder="Last Name" required>
+                                   </div>
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <label for="specialization">Specialization*</label>
+                                        <input type="text" name="specialization" value="<%=doctor.SPECIALIZATION%>" placeholder="specialization" class="form-control" required>
+                                   </div>
+
+                                   <div class="col-md-6 col-sm-6">
+                                        <label for="fee">Consultancy Fee*</label>
+                                        <input type="text" name="fee" value="<%=doctor.CONSULTATION_FEE%>" placeholder="fee" class="form-control" required>
+                                   </div>
+
+                                   <div class="col-md-3 col-sm-3">
+                                        <label for="starttime">Start Time:</label>
+                                        <input type="time" id="starttime" name="start" value="<%=doctor.TIMEIN.substring(0,5)%>" class="form-control">
+                                   </div>
+
+                                   <div class="col-md-3 col-sm-3">
+                                        <label for="endtime">End Time:</label>
+                                        <input type="time" id="endtime" name="end" value="<%=doctor.TIMEOUT.substring(0,5)%>" class="form-control">
+                                   </div>
+                                   
+                                   <div class="col-md-3 col-sm-3">
+                                        <label for="pstarttime">Priority Start Time:</label>
+                                        <input type="time" id="pstarttime" name="pstart" value="<%=doctor.PRIORITYSTART.substring(0,5)%>" class="form-control">
+                                   </div>
+                                   
+                                   <div class="col-md-3 col-sm-3">
+                                        <label for="pendtime">Priority End Time:</label>
+                                        <input type="time" id="pendtime" name="pend" value="<%=doctor.PRIORITYEND.substring(0,5)%>" class="form-control">
+                                   </div>
+                                   
+                                   <div class="col-md-6 col-sm-6">
+                                        <button type="submit" class="form-control" id="cf-submit">Submit Button</button>
+                                   </div>
+                              </div>
+                        </form>
+                    </div>
+               </div>
+          </div>
+     </section>
+<%- include('../partials/footer') %>
