@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator')
 
 module.exports = {
     adminSignup: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
@@ -13,7 +13,7 @@ module.exports = {
 
     //doctor is registered by admin so the use of this function is in 
     doctorSignup: function(req, res ,next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
@@ -33,7 +33,7 @@ module.exports = {
     },
 
     adminEdit: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
@@ -43,7 +43,7 @@ module.exports = {
     },
 
     doctorEdit: function(req, res ,next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
@@ -63,7 +63,7 @@ module.exports = {
     },
 
     adminDoctorEdit: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
@@ -73,7 +73,7 @@ module.exports = {
     },
 
     emailOrPasswordChange: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)

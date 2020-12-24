@@ -15,9 +15,9 @@ module.exports = {
     },
 
     postAdminSignup: passport.authenticate('local-signup-admin', {
-        successRedirect : '/admin/dashboard', // redirect to the secure profile section
-        failureRedirect : 'login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect : '/admin/dashboard', 
+        failureRedirect : 'login', 
+        failureFlash : true 
     }),
 
     getAdminLogin: function(req, res, next){
@@ -25,9 +25,9 @@ module.exports = {
     },
 
     postAdminLogin: passport.authenticate('local-login-admin', {
-        successRedirect : '/admin/dashboard', // redirect to the secure profile section
-        failureRedirect : 'login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect : '/admin/dashboard', 
+        failureRedirect : 'login', 
+        failureFlash : true 
     }),
 
     //Doctor is being registered by admin so his registering controller would be in admin.js
@@ -36,9 +36,9 @@ module.exports = {
     },
 
     postDoctorLogin: passport.authenticate('local-login-doctor', {
-        successRedirect : '/doctor/dashboard', // redirect to the secure profile section
-        failureRedirect : 'login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect : '/doctor/dashboard', 
+        failureRedirect : 'login', 
+        failureFlash : true 
     }),
 
     getPatientSignup: function(req, res, next){
@@ -46,9 +46,9 @@ module.exports = {
     },
 
     postPatientSignup: passport.authenticate('local-signup-patient', {
-        successRedirect : '/authenticate/patient/login', // redirect to the secure profile section
-        failureRedirect : 'register', // redirect back to the signup page if there is an error
-        failureFlash : true, // allow flash messages
+        successRedirect : '/authenticate/patient/login', 
+        failureRedirect : 'register', 
+        failureFlash : true, 
         session: false
     }),
 
@@ -57,9 +57,9 @@ module.exports = {
     },
 
     postPatientLogin: passport.authenticate('local-login-patient', {
-        successRedirect : '/patient/dashboard', // redirect to the secure profile section
-        failureRedirect : 'login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect : '/patient/dashboard', 
+        failureRedirect : 'login', 
+        failureFlash : true 
     }),
 
     logout: function(req, res, next){ 

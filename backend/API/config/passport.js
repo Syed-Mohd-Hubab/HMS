@@ -9,7 +9,6 @@ const jwt = require('jsonwebtoken')
 const saltRounds = 10
 
 module.exports = function(passport) {
-    // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
         if( user.Patient_id )
             done(null, { Patient_id: user.Patient_id })
@@ -21,54 +20,33 @@ module.exports = function(passport) {
             done(null, user)
     })
 
-    // used to deserialize the user
     passport.deserializeUser(function(user, done) {
-        if( user.Patient_id )
-        {
+        if( user.Patient_id ){
             connection.query("SELECT * FROM PATIENT WHERE PATIENT_ID = ?", [user.Patient_id], (err,rows) =>{
                 done(null, rows[0])
             })
         }
-        else if( user.Admin_id )
-        {
+        else if( user.Admin_id ){
             connection.query("SELECT * FROM HADMIN WHERE ADMIN_ID = ?", [user.Admin_id], (err,rows) =>{
                 done(null, rows[0])
             })
         }
-        else if(user.Doctor_id )
-        {
+        else if(user.Doctor_id ){
             connection.query("SELECT * FROM DOCTOR WHERE DOCTOR_ID = ?", [user.Doctor_id], (err,rows) =>{
                 done(null, rows[0])
             })
-        }
-        else
-        {
+        }else{
             done(null, user)
         }
-            // connection.connect()
-        // console.log(user)
-        // connection.query("SELECT * FROM PATIENT WHERE PATIENT_ID = ? ",[user.id], function(err, rows){
-            // done(null, user)
-        // })
-        // connection.end()
     })
  
-    // we are using named strategies since we have our custom startegies now one for login and one for signup
-    // by default, if there was no name, it would just be called 'local' but now we are using custom names
-
     passport.use('local-signup-patient', new LocalStrategy({
-        usernameField : 'email',     // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email',     
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+        passReqToCallback : true 
     },
     function(req, email, password, done){
         let user = req.body
-        // if(!user.email || !user.password || !user.fname || !user.lname || !user.contact || !user.gender || !user.dateofbirth) {
-        //     return done(null, false, req.flash('error', 'Fill all required fields(* means field is required)'))
-        // }
-
-		// find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
         connection.query("SELECT * FROM PATIENT WHERE EMAIL = ?",[user.email], function(err,rows){
 			if(err){
                 return done(err)
@@ -112,10 +90,10 @@ module.exports = function(passport) {
     ))
 
     passport.use('local-login-patient', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
+        
         usernameField : 'email',
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+        passReqToCallback : true 
     },
     function(req, email, password, done) {
         if(!email || !password) {
@@ -123,7 +101,6 @@ module.exports = function(passport) {
         }
 
         connection.query("SELECT * FROM PATIENT WHERE EMAIL = ?",[email],function(err,rows){
-            // let test = rows[0].DOB.toISOString().split('T')[0]   //working
             if(err){
                 return done(err)
             }
@@ -148,9 +125,9 @@ module.exports = function(passport) {
     ))
 
     passport.use('local-signup-admin', new LocalStrategy({
-        usernameField : 'email', // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email', 
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+        passReqToCallback : true 
     },
     function(req, email, password, done) {
         let user = req.body
@@ -158,8 +135,6 @@ module.exports = function(passport) {
             return done(null, false, req.flash('error', 'Fill all required fields(* means field is required)'))
         }
 
-		// find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
         connection.query("SELECT * FROM HADMIN WHERE EMAIL = ?",[user.email], function(err,rows){
 			if(err){
                 return done(err)
@@ -194,9 +169,9 @@ module.exports = function(passport) {
     ))
 
     passport.use('local-login-admin', new LocalStrategy({
-        usernameField : 'email', // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email', 
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+        passReqToCallback : true 
     },
     function(req, email, password, done) {
         if(!email || !password)
@@ -228,9 +203,9 @@ module.exports = function(passport) {
     ))
 
     passport.use('local-login-doctor', new LocalStrategy({
-        usernameField : 'email', // by default, local strategy uses username and password, we will override with email
+        usernameField : 'email', 
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+        passReqToCallback : true 
     },
     function(req, email, password, done) {
         if(!email || !password) {
