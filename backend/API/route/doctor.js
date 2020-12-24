@@ -125,11 +125,31 @@ router.get("/prescriptions", ensureDoctor, (req, res) => {
         console.log(err);
         res.redirect("/doctor/dashboard");
       } else {
-        res.render("../views/doctor/prescriptions.ejs", { rows2: rows });
+        console.log("Showing prescriptions:"+rows)
+        res.render("../views/doctor/prescriptions.ejs", { rows2: rows})
       }
+    })
+})
+
+router.get("/prescription/:id", ensureDoctor, (req, res) =>{
+  connection.query("select *, CONCAT(p.Fname,' ', p.Lname) as Pname from appointment a, patient p where a.appointment_id=? and a.patient_id=p.patient_id;", [req.params.id], (err, row) =>{
+    if(err){
+      console.log("Err in details id: "+err)
+      res.redirect("/doctor/dashboard")
+    } else {
+      connection.query("select * from inpatient where appointment_id=?", [req.params.id], (err2, row2) => {
+        if(err2){
+          console.log("err in presc id 2: "+err2)
+          res.redirect("/doctor/dashboard")
+        }
+        else{
+          console.log("Showing all details: "+row +","+ row2)
+          res.render("../views/doctor/details", {row:row, row2:row2})
+        }
+      })
     }
-  );
-});
+  })
+})
 
 router.get("/appointments/assigntime/:id", ensureDoctor, (req, res) => {
   connection.query(
@@ -173,5 +193,82 @@ router.put("/appointments/assigntime/:id", ensureDoctor, (req, res) => {
 		}
 	})
 });
+
+router.get("/inpatient/:id", ensureDoctor, (req, res) =>{ 
+  connection.query("select a.*, CONCAT(p.Fname, ' ', p.Lname) as Pname from appointment a, patient p where a.Patient_id=p.Patient_id and a.appointment_id=?;", [req.params.id], (err, row) =>{
+    if(err){
+      console.log("Err in get inpatient id: "+err)
+      res.redirect("/doctor/dashboard")
+    }
+    else{
+      connection.query("select * from room where room_available=true;", (err, rows) =>{
+        if(err){
+          console.log(err)
+        }else{
+          console.log("Assigning room to inpatient: "+row)
+          res.render("../views/doctor/inpatient", {row:row, rows:rows})
+        }
+      })
+    }
+  })
+})
+
+router.post("/inpatient/:id", ensureDoctor, (req, res) =>{
+  connection.query("insert into inpatient set Appointment_id=?, Patient_id=?, Doctor_id=?, Room_id=?, Department=?, Descript=?, TimeIn=NOW();",
+  [req.params.id, req.body.Patient_id, req.user.Doctor_id, req.body.Room, req.user.Specialization, req.body.Desc],
+  (err, result) =>{
+    if(err){
+      console.log("Err in posting inpatient: "+err)
+      res.redirect("/doctor/dashboard")
+    } else {
+      console.log("post inpatient table: "+result)
+      connection.query("update room set Room_available=false, Patient_id=?, Appointment_id=? where room_id=?;", [req.body.Patient_id, req.params.id, req.body.Room], (err2, result2)=>{
+        if(err){
+          console.log("Err in post inpatient room: "+err2)
+          res.redirect("/doctor/dashboard")
+        } else {
+          console.log("Assigned patient: "+result2)
+          req.flash("success", "Room assigned to patient")
+          res.redirect("/doctor/dashboard")
+        }
+      })
+    }
+  })
+})
+
+router.get("/inpatientslist", ensureDoctor, (req, res) =>{
+  connection.query("select i.*, CONCAT(p.Fname,' ',p.Lname) as Pname from inpatient i, patient p where i.patient_id=p.patient_id and i.doctor_id=? and i.TimeOut is null", [req.user.Doctor_id], (err, rows) =>{
+    if(err)
+      console.log(err)
+    else{
+      console.log("showing all inpatients: "+rows)
+      res.render("../views/doctor/inpatientslist", {rows:rows})
+    }
+  })
+}) 
+
+router.get("/outpatient/:id", ensureDoctor, (req, res) =>{
+  connection.query("select i.*, CONCAT(p.Fname, ' ', p.Lname) as Pname, d.Consultation_fee as Fee from inpatient i, patient p, doctor d where i.appointment_id=? and i.doctor_id=d.doctor_id and i.patient_id=p.patient_id", [req.params.id], (err, row) =>{
+    if(err){
+      console.log("Err in get outpatient: "+err)
+      res.redirect("/doctor/dashboard")
+    } else {
+      console.log("outpatienting: "+row[0].Pname)
+      res.render("../views/doctor/outpatient", {row:row})
+    }
+  })
+})
+
+router.put("/outpatient/:id", ensureDoctor, (req, res) => {
+  connection.query("update inpatient set TimeOut=NOW(), Fee=? where appointment_id=?;", [parseFloat(req.body.fees)+parseFloat(req.user.Consultation_fee), req.params.id], (err, result) =>{
+    if(err){
+      console.log("Err in put outpatient: "+err)
+    } else {
+      console.log("Outpatiented: "+req.body.Pname)
+      req.flash("success", "Patient released !")
+      res.redirect("/doctor/dashboard")
+    }
+  })
+})
 
 module.exports = router;
