@@ -2,12 +2,12 @@ const nodemailer = require('nodemailer')
 
 module.exports = {
     sendmail: function(receiver, subject, message){
-        // Step 1
+        // Step 1=
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
                 user: process.env.EMAIL || 'abc@gmail.com',
-                pass: process.env.PASSWORD || '1234'
+                pass: process.env.GMAIL_PASSWORD || '1234'
             }
         });
 
@@ -27,7 +27,6 @@ module.exports = {
             if(error){
                 return error 
             }
-            console.log('Email sent!!!');
         });
     }
 }
