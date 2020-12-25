@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
 
-<<<<<<< HEAD
-     <title>Health - Medical Website Template</title>
-=======
      <title>Health Care</title>
->>>>>>> 5b57f561bc32b31ae6372502a6051b152ab1ff23
      
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -53,28 +49,8 @@
           <!-- MENU LINKS -->
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-                    <% if( user ){ %>
-                         <li> <a href="/home" class="smoothScroll"><%= user.Fname  %> <%= user.Lname %></a> </li>
-                    <% } %> 
-                    <li><a href="/home" class="smoothScroll">Home</a></li>
-                    <li><a href="/about" class="smoothScroll">About Us</a></li>
-                    <% if( !user ){ %> 
-                         <li><a href="/authenticate/patient/login" class="smoothScroll">Patient Login</a></li>
-                         <li><a href="/authenticate/patient/register" class="smoothScroll">Patient Register</a></li>
-                         <li><a href="/authenticate/doctor/login" class="smoothScroll">Doctor Login</a></li>
-                         <li><a href="/authenticate/admin/login" class="smoothScroll">Admin Login</a></li>
-                    <% } %>
-                    <% if( user ){ %>
-                         <li><a href="/authenticate/logout" class="smoothScroll">Logout</a></li>
-                    <% } %> 
-=======
-                    <li><a href="/home" class="smoothScroll">Home</a></li>
-                    <li><a href="/authenticate/patient/login" class="smoothScroll">Patient Login</a></li>
-                    <li><a href="/authenticate/patient/register" class="smoothScroll">Patient Register</a></li>
-                    <li><a href="/authenticate/doctor/login" class="smoothScroll">Doctor Login</a></li>
-                    <li><a href="/authenticate/admin/login" class="smoothScroll">Admin Login</a></li>
->>>>>>> 5b57f561bc32b31ae6372502a6051b152ab1ff23
+                    <li> <a href="/patient/dashboard" class="smoothScroll"><%= user.Fname  %> <%= user.Lname %></a> </li>
+                    <li><a href="/authenticate/logout" class="smoothScroll">Logout</a></li>
                </ul>
           </div>
 

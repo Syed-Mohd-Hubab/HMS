@@ -1,42 +1,42 @@
 module.exports = {
-    ensureAdmin: function (req, res, next) {
+    ensureAdmin: function(req, res, next){
         if (req.isAuthenticated() && req.session.passport.user.Admin_id) {
             return next()
         } else {
             req.flash('error', 'You must log in as an admin to go there')
-            res.redirect('/error/401')
+            return res.redirect('/error/401')
         }
     },
-    ensureDoctor: function (req, res, next) {
+    ensureDoctor: function(req, res, next){
         if (req.isAuthenticated() && req.session.passport.user.Doctor_id) {
             return next()
         } else {
             req.flash('error', 'You must log in as a doctor to go there')
-            res.redirect('/error/401')
+            return res.redirect('/error/401')
         }
     },
-    ensurePatient: function (req, res, next) {
+    ensurePatient: function(req, res, next){
         if (req.isAuthenticated() && req.session.passport.user.Patient_id) {
             return next()
         } else {
             req.flash('error', 'You must log in as a patient to go there')
-            res.redirect('/error/401')
+            return res.redirect('/error/401')
         }
     },
-    ensureAuth: function (req, res, next) {
+    ensureAuth: function(req, res, next){
         if (req.isAuthenticated()) {
             return next()
         } else {
             req.flash('error', 'You must log in to go there')
-            res.redirect('/error/401')
+            return res.redirect('/error/401')
         }
     },
-    ensureGuest: function (req, res, next) {
+    ensureGuest: function(req, res, next){
         if (!req.isAuthenticated()) {
             return next();
         } else {
             req.flash('error', 'You must first log out to go there')
-            res.redirect('back');
+            return res.redirect('back');
         }
     },
 }
