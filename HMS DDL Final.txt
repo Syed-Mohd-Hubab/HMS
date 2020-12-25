@@ -35,7 +35,8 @@ CREATE TABLE Patient
     Contact           	VARCHAR(20) UNIQUE NOT NULL,
     Gender      	      VARCHAR(20) NOT NULL,
     DOB				          DATE NOT NULL,
-    Blood_group 	      VARCHAR(4) NOT NULL
+    Blood_group 	      VARCHAR(4) NOT NULL,
+    Verified            BOOLEAN DEFAULT FALSE
   );
   
 CREATE TABLE Appointment
