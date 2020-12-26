@@ -228,4 +228,44 @@ module.exports = {
             }
         })
     },
+
+    getAddRoom: function(req, res, next){
+        connection.query("SELECT ROOM_ID, ROOM_AVAILABLE FROM ROOM", function(error, rows, fields){
+            return res.render('../views/admin/addroom', { TOTALROOMS: rows.length, rooms: rows })
+        })
+    },
+
+    postAddRoom: function(req, res, next){
+        const room = {
+            roomno: req.body.roomno,
+            available: true,
+            pid: null,
+            appid: null
+        }
+        connection.query("INSERT INTO ROOM VALUES(?,?,?,?)",
+            [req.body.roomno, true, null, null],
+            function(error, rows, fields){
+                if(error){
+                    req.flash('error', 'Some error occurred')
+                    return res.redirect('/admin/addroom')
+                }else{
+                    req.flash('info', 'Added new room with Room Number ' + req.body.roomno)
+                    return res.redirect('/admin/addroom')
+                }
+            })
+    },
+
+    getDeleteRoom: function(req, res, next){
+        connection.query('DELETE FROM ROOM WHERE ROOM_ID = ?', 
+        [req.params.id], 
+        function(error, rows, fields){
+            if(error){
+                req.flash('error', 'Some error occurred')
+                return res.redirect('/admin/addroom')
+            }else{
+                req.flash('info', 'Deleted room with Room Number ' + req.params.id)
+                return res.redirect('/admin/addroom')
+            }
+        })
+    },
 }
