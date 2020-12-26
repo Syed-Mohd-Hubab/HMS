@@ -31,4 +31,10 @@ router.put('/editdoctor/:id', ensureAdmin, validate('Admin-DoctorEdit'), validat
 
 router.get('/deletedoctor/:id', ensureAdmin, admin.getDeleteDoctor)
 
+router.get('/addroom', ensureAdmin, admin.getAddRoom)
+
+router.post('/addroom', ensureAdmin, admin.postAddRoom)
+
+router.get('/deleteroom/:id', ensureAdmin, admin.getDeleteRoom)
+
 module.exports = router
