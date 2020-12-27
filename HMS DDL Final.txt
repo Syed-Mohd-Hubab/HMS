@@ -72,7 +72,6 @@ CREATE TABLE Room
   (
     Room_id					INTEGER AUTO_INCREMENT PRIMARY KEY,
     Room_available			BOOL DEFAULT TRUE,
-    Patient_id				VARCHAR(37),
     Appointment_id			VARCHAR(37)
   );
 
