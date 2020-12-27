@@ -236,12 +236,6 @@ module.exports = {
     },
 
     postAddRoom: function(req, res, next){
-        const room = {
-            roomno: req.body.roomno,
-            available: true,
-            pid: null,
-            appid: null
-        }
         connection.query("INSERT INTO ROOM VALUES(?,?,?,?)",
             [req.body.roomno, true, null, null],
             function(error, rows, fields){
