@@ -61,10 +61,10 @@ CREATE TABLE Appointment
 CREATE TABLE Doctortime
   (
     Doctor_ID				VARCHAR(37) NOT NULL,
-    TimeIn					TIME NOT NULL,
-    TimeOut					TIME NOT NULL,
-    PriorityStart			TIME NOT NULL,
-    PriorityEnd				TIME NOT NULL,
+    TimeIn					TIME,
+    TimeOut					TIME,
+    PriorityStart			TIME,
+    PriorityEnd				TIME,
     FOREIGN KEY(Doctor_ID)	REFERENCES Doctor(Doctor_ID) ON DELETE CASCADE
   );
   
