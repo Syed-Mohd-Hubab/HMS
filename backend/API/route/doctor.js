@@ -43,7 +43,7 @@ router.put(
 
 router.get("/appointments", ensureDoctor, (req, res) => {
   connection.query(
-    "select * from appointment where Not_pending=false and department= ?;",
+    "select a.*, CONCAT(p.Fname,' ', p.Lname) as Pname from appointment a, patient p where Not_pending=false and department= ? and a.patient_id=p.patient_id ;",
     [req.user.Specialization],
     (err, rows) => {
       if (err) console.log(err);
@@ -182,7 +182,18 @@ router.get("/appointments/assigntime/:id", ensureDoctor, (req, res) => {
 });
 
 router.put("/appointments/assigntime/:id", ensureDoctor, (req, res) => {
-	connection.query("update appointment set Time_assigned=?, Time_Assigned_day = ?, Time_Assigned_date=?, Doctor_id=? where appointment_id = ?", [req.body.start, req.body.day, req.body.date, req.user.Doctor_id, req.params.id], (err, result) =>{
+  var d = new Date(req.body.date);
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+  var n = weekday[d.getDay()];
+
+	connection.query("update appointment set Time_assigned=?, Time_Assigned_day = ?, Time_Assigned_date=?, Doctor_id=? where appointment_id = ?", [req.body.start, n, req.body.date, req.user.Doctor_id, req.params.id], (err, result) =>{
 		if(err){
 			console.log(err)
 			res.redirect("/doctor/dashboard")
@@ -260,15 +271,29 @@ router.get("/outpatient/:id", ensureDoctor, (req, res) =>{
 })
 
 router.put("/outpatient/:id", ensureDoctor, (req, res) => {
-  connection.query("update inpatient set TimeOut=NOW(), Fee=? where appointment_id=?;", [parseFloat(req.body.fees)+parseFloat(req.user.Consultation_fee), req.params.id], (err, result) =>{
+  var tot_fee=parseFloat(req.body.fees)+parseFloat(req.user.Consultation_fee);
+  connection.query("update inpatient set TimeOut=NOW(), Fee=? where appointment_id=?;", [tot_fee, req.params.id], (err, result) => {
     if(err){
       console.log("Err in put outpatient: "+err)
     } else {
-      console.log("Outpatiented: "+req.body.Pname)
-      req.flash("success", "Patient released !")
-      res.redirect("/doctor/dashboard")
+      connection.query("update appointment set Total_fee=? where appointment_id=?", [tot_fee, req.params.id], (err2, res) => {
+        if(err){
+          console.log("err is appointment update: "+err2)
+        }
+        else{
+          connection.query("update room set room_available=true, patient_id=NULL, appointment_id=NULL where appointment_id=?",[req.params.id], (err3, res3) =>{
+            if(err3){
+              console.log("HEREEEEEEEE:"+err3)
+            } else {
+              console.log("Outpatiented: "+res3)
+              req.flash("success", "Patient released !")
+            }
+          })
+        }
+      })
     }
   })
+  res.redirect("/doctor/dashboard") 
 })
 
 module.exports = router;

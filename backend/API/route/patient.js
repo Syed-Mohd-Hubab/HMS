@@ -105,4 +105,15 @@ router.get('/prescriptions', ensurePatient, (req, res, next) =>{
     })
 })
 
+router.get("/delete/:id", ensurePatient, (req, res) => {
+    connection.query("delete from appointment where appointment_id=?; ", [req.params.id], (err ,result) => {
+        if(err){
+            console.log(err)
+        } else {
+            req.flash("success", "Deleted appointment")
+            res.redirect("/patient/dashboard")
+        }
+    })
+})
+
 module.exports = router

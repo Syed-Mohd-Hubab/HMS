@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../partials/doctor/header') %>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -35,7 +35,7 @@
                             <td><%=row.Disease %></td>
                             <td><%=row.Treatment %></td>
                             <% if(row2.length==0) {%>
-                              <td> Neither In nor Out
+                              <td align="center"> Neither In nor Out
                                   <button type="button" class="btn btn-default">
                                       <a href="/doctor/inpatient/<%=row.Appointment_id%>">Assign inpatient</a>
                                   </button>

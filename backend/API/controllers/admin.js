@@ -115,8 +115,6 @@ module.exports = {
         data.pstart += ':00' 
         data.pend += ':00'
     
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
         connection.query("SELECT * FROM DOCTOR WHERE EMAIL = ?",[data.email], function(error, rows, fields){
             if(error){
                 req.flash('error', error)
@@ -147,7 +145,7 @@ module.exports = {
                                                 console.log(DrTerr)
                                             }else{
                                                 req.flash('success', 'Successfully add a new doctor')
-                                                return res.redirect('dashboard')
+                                                return res.redirect('showalldoctors')
                                             }
                                         }
                                     )
@@ -175,7 +173,6 @@ module.exports = {
         connection.query('SELECT DOCTOR.DOCTOR_ID, DOCTOR.FNAME, DOCTOR.MNAME, DOCTOR.LNAME, DOCTOR.SPECIALIZATION, DOCTOR.CONSULTATION_FEE, DOCTORTIME.TIMEIN, DOCTORTIME.TIMEOUT, DOCTORTIME.PRIORITYSTART, DOCTORTIME.PRIORITYEND FROM DOCTOR JOIN DOCTORTIME ON DOCTOR.DOCTOR_ID=DOCTORTIME.DOCTOR_ID WHERE DOCTOR.DOCTOR_ID= ?',
         [req.params.id], 
         function(error, rows, fields){
-            // console.log(rows[0])
             if(error){
                 console.log(error)
             }
@@ -228,6 +225,40 @@ module.exports = {
                         return res.redirect('/admin/showalldoctors')
                     }
                 })
+            }
+        })
+    },
+
+    getAddRoom: function(req, res, next){
+        connection.query("SELECT ROOM_ID, ROOM_AVAILABLE FROM ROOM", function(error, rows, fields){
+            return res.render('../views/admin/addroom', { TOTALROOMS: rows.length, rooms: rows })
+        })
+    },
+
+    postAddRoom: function(req, res, next){
+        connection.query("INSERT INTO ROOM VALUES(?,?,?,?)",
+            [req.body.roomno, true, null, null],
+            function(error, rows, fields){
+                if(error){
+                    req.flash('error', 'Some error occurred')
+                    return res.redirect('/admin/addroom')
+                }else{
+                    req.flash('info', 'Added new room with Room Number ' + req.body.roomno)
+                    return res.redirect('/admin/addroom')
+                }
+            })
+    },
+
+    getDeleteRoom: function(req, res, next){
+        connection.query('DELETE FROM ROOM WHERE ROOM_ID = ?', 
+        [req.params.id], 
+        function(error, rows, fields){
+            if(error){
+                req.flash('error', 'Some error occurred')
+                return res.redirect('/admin/addroom')
+            }else{
+                req.flash('info', 'Deleted room with Room Number ' + req.params.id)
+                return res.redirect('/admin/addroom')
             }
         })
     },

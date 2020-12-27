@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../partials/doctor/header') %>
 
 <section id="appointment" data-stellar-background-ratio="3">
   <div class="container">
@@ -12,7 +12,7 @@
           <div class="section-title wow fadeInUp" data-wow-delay="0.8s">
             <h3>Dr. <%=user.Fname%> <%=user.Lname%>,
               prescribing inpatient <u><%=row[0].Pname%></u></h3>
-              <h5>Patient ID: <%=row[0].Patient_id%></h5>
+              <!-- <h5>Patient ID: <%=row[0].Patient_id%></h5> -->
             </div>
             <div class="wow fadeInUp" data-wow-delay="1s">
                 <div class="col-md-6 col-sm-6">

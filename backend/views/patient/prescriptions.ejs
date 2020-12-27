@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../partials/patient/header') %>
 
 <div class="container">
     <div class="row">
@@ -21,6 +21,7 @@
                         <th>#</th>
                         <th>Department:</th>
                         <th>Doctor:</th>
+                        <th>Time of appointment:</th>
                         <th>Disease:</th>
                         <th>Treatment:</th>
                         <th>Total Fee:</th>
@@ -32,9 +33,11 @@
                         <tr>
                             <td> <%=i+1 %> </td>
                             <td> <%=row.department %> </td>
-                            <td> <%=row.Dname %> </td> 
+                            <td> <%=row.Dname %> </td>
+                            <td><%=row.Appointment_Time.toString().slice(0, 24)%></td>
                             <td> <%=row.Disease%> </td>
                             <td> <%=row.Treatment%> </td>
+                            <!-- <td align="center"><a href="pay/<%=row.Appointment_id%>" class="btn btn-default" >Pay <%=row.Total_fee%></em></a></td>                         -->
                             <td> <%=row.Total_fee%> </td>
                         </tr>
                         <% }) %>

@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../partials/doctor/header') %>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -19,6 +19,7 @@
                         <th> <center> <em class="fa fa-cog"> </center></em></th>
                         <th class="hidden-xs">#</th>
                         <th>Department</th>
+                        <th>Name</th>
                         <th>Message</th>
                         <th>Time Assigned</th>
                     </tr> 
@@ -38,7 +39,8 @@
                               </td>
                               <td class="hidden-xs"><%=i+1%></td>
                               <td> <%=appointment.department %> </td>
-                              <td> <%=appointment.message %> </td>
+                              <td> <%=appointment.Pname%> </td>
+                              <td> <%=appointment.Message %> </td>
                               <td> 
                                 <% if(appointment.Time_assigned == null) {%>
                                   <a href="appointments/assigntime/<%=id%>" class="btn btn-danger"><i> Not assigned</i></a>

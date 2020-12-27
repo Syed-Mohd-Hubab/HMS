@@ -2,22 +2,22 @@ const { validationResult } = require('express-validator')
 
 module.exports = {
     adminSignup: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('register')
+            return res.redirect('/authenticate/admin/register')
         }
         next()
     },
 
     //doctor is registered by admin so the use of this function is in 
     doctorSignup: function(req, res ,next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('addnewdoctor')
+            return res.redirect('/admin/addnewdoctor')
         }
         next()
     },
@@ -27,27 +27,27 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('register')
+            return res.redirect('/authenticate/patient/register')
         }
         next()
     },
 
     adminEdit: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('profile')
+            return res.redirect('/admin/profile')
         }
         next()
     },
 
     doctorEdit: function(req, res ,next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('profile')
+            return res.redirect('/doctor/profile')
         }
         next()
     },
@@ -57,23 +57,23 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('profile')
+            return res.redirect('/patient/profile')
         }
         next()
     },
 
     adminDoctorEdit: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('showalldoctors')
+            return res.redirect('/admin/showalldoctors')
         }
         next()
     },
 
     emailOrPasswordChange: function(req, res, next){
-        const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
+        const errors = validationResult(req); 
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)

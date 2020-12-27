@@ -76,7 +76,6 @@ module.exports = {
                 console.log(error)
                 return res.redirect('dashboard')
             }else{
-                // console.log(rows[0].PASS)
                 bcrypt.compare(req.body.oldpassword, rows[0].PASS, function(err, result) {
                     if(err){
                         console.log(err)

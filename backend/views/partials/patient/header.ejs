@@ -49,11 +49,8 @@
           <!-- MENU LINKS -->
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/home" class="smoothScroll">Home</a></li>
-                    <li><a href="/authenticate/patient/login" class="smoothScroll">Patient Login</a></li>
-                    <li><a href="/authenticate/patient/register" class="smoothScroll">Patient Register</a></li>
-                    <li><a href="/authenticate/doctor/login" class="smoothScroll">Doctor Login</a></li>
-                    <li><a href="/authenticate/admin/login" class="smoothScroll">Admin Login</a></li>
+                    <li> <a href="/patient/dashboard" class="smoothScroll"><%= user.Fname  %> <%= user.Lname %></a> </li>
+                    <li><a href="/authenticate/logout" class="smoothScroll">Logout</a></li>
                </ul>
           </div>
 
