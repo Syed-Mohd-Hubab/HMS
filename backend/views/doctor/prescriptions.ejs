@@ -33,7 +33,7 @@
                                 <a href="/doctor/inpatient/<%=row.Appointment_id%>">Inpatient</a>
                               </button>
                             </td> -->
-                            <td>
+                            <td align="center">
                               <button type="button" class="btn btn-default">
                                 <a href="/doctor/prescription/<%=row.Appointment_id%>">See Details</a>
                               </button>
@@ -41,7 +41,7 @@
                             <td><%=i+1 %></td>
                             <td><%=row.Appointment_Time.toString().slice(0, 24) %></td>
                             <td><%=row.Pname %></td>
-                            <td><%=row.message %></td>
+                            <td><%=row.Message %></td>
                             <td><%=row.Disease %></td>
                             <td><%=row.Treatment %></td>
                           </tr>

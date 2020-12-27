@@ -145,7 +145,7 @@ module.exports = {
                                                 console.log(DrTerr)
                                             }else{
                                                 req.flash('success', 'Successfully add a new doctor')
-                                                return res.redirect('dashboard')
+                                                return res.redirect('showalldoctors')
                                             }
                                         }
                                     )
