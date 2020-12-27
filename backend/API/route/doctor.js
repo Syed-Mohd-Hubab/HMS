@@ -281,13 +281,19 @@ router.put("/outpatient/:id", ensureDoctor, (req, res) => {
           console.log("err is appointment update: "+err2)
         }
         else{
-          console.log("Outpatiented: "+res)
-          req.flash("success", "Patient released !")
+          connection.query("update room set room_available=true, patient_id=NULL, appointment_id=NULL where appointment_id=?",[req.params.id], (err3, res3) =>{
+            if(err3){
+              console.log("HEREEEEEEEE:"+err3)
+            } else {
+              console.log("Outpatiented: "+res3)
+              req.flash("success", "Patient released !")
+            }
+          })
         }
       })
-      res.redirect("/doctor/dashboard") 
     }
   })
+  res.redirect("/doctor/dashboard") 
 })
 
 module.exports = router;

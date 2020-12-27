@@ -18,6 +18,7 @@
 
                   <thead>
                     <tr>
+                        <th><center> <em class="fa fa-cog"> </center></em></th>
                         <th>#</th>
                         <th>Department</th>
                         <th>Message Given</th>
@@ -27,6 +28,7 @@
                   <tbody>
                         <% rows.forEach( (row, i) => { %>
                         <tr>
+                            <td align="center"><a href="delete/<%=row.Appointment_id%>" class="btn btn-primary" >Cancel</em></a></td>
                             <td> <%=i+1 %> </td>
                             <td> <%=row.department %> </td>
                             <td> <%=row.Message %> </td>
