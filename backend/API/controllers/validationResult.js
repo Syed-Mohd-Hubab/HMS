@@ -6,7 +6,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('register')
+            return res.redirect('/authenticate/admin/register')
         }
         next()
     },
@@ -17,7 +17,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('addnewdoctor')
+            return res.redirect('/admin/addnewdoctor')
         }
         next()
     },
@@ -27,7 +27,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('register')
+            return res.redirect('/authenticate/patient/register')
         }
         next()
     },
@@ -37,7 +37,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('profile')
+            return res.redirect('/admin/profile')
         }
         next()
     },
@@ -47,7 +47,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('profile')
+            return res.redirect('/doctor/profile')
         }
         next()
     },
@@ -57,7 +57,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('profile')
+            return res.redirect('/patient/profile')
         }
         next()
     },
@@ -67,7 +67,7 @@ module.exports = {
         if(!errors.isEmpty()){
             const errlist = errors.array().map(error => error.msg)
             req.flash('error', errlist)
-            return res.redirect('showalldoctors')
+            return res.redirect('/admin/showalldoctors')
         }
         next()
     },
