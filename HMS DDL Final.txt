@@ -78,16 +78,10 @@ CREATE TABLE Room
 CREATE TABLE InPatient
   (
     Appointment_id			VARCHAR(37) NOT NULL,
-    Patient_id				VARCHAR(37) NOT NULL,
-    Doctor_id				VARCHAR(37),
-    Room_id					INTEGER NOT NULL,
     Department				VARCHAR(40) NOT NULL,
     Descript				VARCHAR(4096),
     TimeIn					DATETIME NOT NULL,
     TimeOut					DATETIME,
     Fee						INTEGER,
-    FOREIGN KEY(Appointment_id)	REFERENCES Appointment(Appointment_id),
-    FOREIGN KEY(Doctor_ID)		REFERENCES Doctor(Doctor_ID) ON DELETE SET NULL, 
-    FOREIGN KEY(Patient_ID)		REFERENCES Patient(Patient_ID),
-    FOREIGN KEY(Room_ID)		REFERENCES Room(Room_ID)
+    FOREIGN KEY(Appointment_id)	REFERENCES Appointment(Appointment_id)
    );
