@@ -236,8 +236,8 @@ module.exports = {
     },
 
     postAddRoom: function(req, res, next){
-        connection.query("INSERT INTO ROOM VALUES(?,?,?,?)",
-            [req.body.roomno, true, null, null],
+        connection.query("INSERT INTO ROOM VALUES(?,?,?)",
+            [req.body.roomno, true, null],
             function(error, rows, fields){
                 if(error){
                     req.flash('error', 'Some error occurred')
@@ -255,6 +255,7 @@ module.exports = {
         function(error, rows, fields){
             if(error){
                 req.flash('error', 'Some error occurred')
+                console.log(error)
                 return res.redirect('/admin/addroom')
             }else{
                 req.flash('info', 'Deleted room with Room Number ' + req.params.id)
