@@ -255,7 +255,6 @@ module.exports = {
         function(error, rows, fields){
             if(error){
                 req.flash('error', 'Some error occurred')
-                console.log(error)
                 return res.redirect('/admin/addroom')
             }else{
                 req.flash('info', 'Deleted room with Room Number ' + req.params.id)

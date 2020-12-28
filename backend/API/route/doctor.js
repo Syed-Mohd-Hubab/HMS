@@ -233,7 +233,7 @@ router.post("/inpatient/:id", ensureDoctor, (req, res) =>{
       res.redirect("/doctor/dashboard")
     } else {
       console.log("post inpatient table: "+result)
-      connection.query("update room set Room_available=false, Patient_id=?, Appointment_id=? where room_id=?;", [req.body.Patient_id, req.params.id, req.body.Room], (err2, result2)=>{
+      connection.query("update room set Room_available=false, Appointment_id=? where room_id=?;", [req.params.id, req.body.Room], (err2, result2)=>{
         if(err){
           console.log("Err in post inpatient room: "+err2)
           res.redirect("/doctor/dashboard")
@@ -281,7 +281,7 @@ router.put("/outpatient/:id", ensureDoctor, (req, res) => {
           console.log("err is appointment update: "+err2)
         }
         else{
-          connection.query("update room set room_available=true, patient_id=NULL, appointment_id=NULL where appointment_id=?",[req.params.id], (err3, res3) =>{
+          connection.query("update room set room_available=true, appointment_id=NULL where appointment_id=?",[req.params.id], (err3, res3) =>{
             if(err3){
               console.log("HEREEEEEEEE:"+err3)
             } else {
