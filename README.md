@@ -6,4 +6,8 @@ An _Admin_ can add/remove/view the rooms and the doctors.<br>
 ### Features:
 - Email verification using nodemailer package
 - User authentication using **PassportJS**
-- 
+- User ID generated using **UUID**
+- Implemented middleware to verify user for redirection
+- CRUD operations using **Express Router**
+- Used **EJS** templates to communicate between backend &amp; frontend
+-  
