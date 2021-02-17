@@ -3,8 +3,11 @@ A web application built using **NodeJS, ExpressJS &amp; MySQL** for Patients and
 A _Patient_ can request for appointments for various department, check upcoming appointments, cancel them and check his prescription history.<br>
 A _Doctor_ can assign a time to the requested appointment(s) of patient(s), assign rooms to inpatient in case of necessity, cancel appointments and outpatient current inpatients.<br>
 An _Admin_ can add/remove/view the rooms as well as the doctors in the hospital.<br>
+### Technologies used:
+
 ### Features:
-- Email verification using _**nodemailer**_
+- Package managing using _**NPM**_
+- Email verification using _**Nodemailer**_
 - User authentication using _**PassportJS**_
 - User ID generated using _**UUID**_
 - Implemented Middleware to verify user while redirecting
