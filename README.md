@@ -4,11 +4,11 @@ A _Patient_ can request for appointments for various department, check upcoming 
 A _Doctor_ can assign a time to the requested appointment(s) of patient(s), assign rooms to inpatient in case of necessity, cancel appointments and outpatient current inpatients.<br>
 An _Admin_ can add/remove/view the rooms as well as the doctors in the hospital.<br>
 ### Features:
-- Email verification using nodemailer package
-- User authentication using **PassportJS**
-- User ID generated using **UUID**
-- Implemented middleware to verify user for redirection
-- CRUD operations using **Express Router**
-- Used **EJS** templates to communicate between backend &amp; frontend
-- Stored user login seesions using **Express-Session**
-- Encrypted user passwords into database using **bcrypt**
+- Email verification using _**nodemailer**_
+- User authentication using _**PassportJS**_
+- User ID generated using _**UUID**_
+- Implemented Middleware to verify user while redirecting
+- CRUD operations using _**Express Router**_
+- Used _**EJS**_ templates for rendering, communication between backend &amp; frontend
+- Stored user login seesions using _**Express-Session**_
+- Encrypted user passwords into database using _**bcrypt**_
