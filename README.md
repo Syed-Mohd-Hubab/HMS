@@ -1,4 +1,4 @@
-# Hospital Management System
+# Hospital Management System using M.E.N. stack
 A web application built using **NodeJS, ExpressJS &amp; MySQL** for Patients and Doctors.<br>
 A _Patient_ can request for appointments for various department, check upcoming appointments, cancel them and check his prescription history.<br>
 A _Doctor_ can assign a time to the requested appointment(s) of patient(s), assign rooms to inpatient in case of necessity, cancel appointments and outpatient current inpatients.<br>
