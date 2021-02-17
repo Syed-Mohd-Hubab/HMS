@@ -4,7 +4,7 @@ A _Patient_ can request for appointments for various department, check upcoming 
 A _Doctor_ can assign a time to the requested appointment(s) of patient(s), assign rooms to inpatient in case of necessity, cancel appointments and outpatient current inpatients.<br>
 An _Admin_ can add/remove/view the rooms as well as the doctors in the hospital.<br>
 ### Technologies used:
-[logo]: https://simpleicons.org/icons/mysql.svg
+<img src="https://simpleicons.org/icons/mysql.svg" width="60">
 ### Features:
 - Package managing using _**NPM**_
 - Email verification using _**Nodemailer**_
