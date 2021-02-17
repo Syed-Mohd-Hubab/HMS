@@ -4,17 +4,7 @@ A _Patient_ can request for appointments for various department, check upcoming 
 A _Doctor_ can assign a time to the requested appointment(s) of patient(s), assign rooms to inpatient in case of necessity, cancel appointments and outpatient current inpatients.<br>
 An _Admin_ can add/remove/view the rooms as well as the doctors in the hospital.<br>
 ### Technologies used:
-Inline-style:
-<img alt="NPM" src="https://simpleicons.org/icons/npm.svg" width="50">
-<img alt="NODEMON" src="https://simpleicons.org/icons/nodemon.svg" width="50">
-<img alt="NODEJS"src="https://simpleicons.org/icons/node-dot-js.svg" width="50">
-<img alt="EXPRESSJS" src="https://simpleicons.org/icons/express.svg" width="50">
-<img alt="HTML5" src="https://simpleicons.org/icons/html5.svg" width="50">
-<img alt="CSS3" src="https://simpleicons.org/icons/css3.svg" width="50">
-<img alt="JAVASCRIPT" src="https://simpleicons.org/icons/javascript.svg" width="50"> 
-<img alt="GIT" src="https://simpleicons.org/icons/git.svg" width="50">
-<img alt="BOOTSTRAP" src="https://simpleicons.org/icons/bootstrap.svg" width="50">
-
+<img alt="NPM" src="https://simpleicons.org/icons/npm.svg" width="50"> <img alt="NODEMON" src="https://simpleicons.org/icons/nodemon.svg" width="50"> <img alt="NODEJS" src="https://simpleicons.org/icons/node-dot-js.svg" width="50"> <img alt="EXPRESSJS" src="https://simpleicons.org/icons/express.svg" width="50"> <img alt="HTML5" src="https://simpleicons.org/icons/html5.svg" width="50"> <img alt="CSS3" src="https://simpleicons.org/icons/css3.svg" width="50"> <img alt="JAVASCRIPT" src="https://simpleicons.org/icons/javascript.svg" width="50">  <img alt="GIT" src="https://simpleicons.org/icons/git.svg" width="50"> <img alt="BOOTSTRAP" src="https://simpleicons.org/icons/bootstrap.svg" width="50"> 
 ### Features:
 - Package managing using _**NPM**_
 - Email verification using _**Nodemailer**_
