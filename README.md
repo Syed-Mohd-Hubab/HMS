@@ -16,4 +16,4 @@ An _Admin_ can add/remove/view the rooms as well as the doctors in the hospital.
 - Stored user login seesions using _**Express-Session**_
 - Encrypted user passwords into database using _**bcrypt**_
 ### Configuration:
-Please configure your database connection in 'backend/API/config/configDB.js' 
+Please configure your database connection in __'backend/API/config/configDB.js'__
