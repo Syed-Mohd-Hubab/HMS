@@ -10,10 +10,10 @@ An _Admin_ can add/remove/view the rooms as well as the doctors in the hospital.
 - Email verification using _**Nodemailer**_
 - User authentication using _**PassportJS**_
 - User ID generated using _**UUID**_
-- Implemented Middleware to verify user while redirecting
+- Implemented Middleware to verify logged in user while redirecting
 - CRUD operations using _**Express Router**_
 - Used _**EJS**_ templates for rendering, communication between backend &amp; frontend
 - Stored user login seesions using _**Express-Session**_
 - Encrypted user passwords into database using _**bcrypt**_
 ### Configuration:
-Please configure your database connection in backend/API/config/configDB.js 
+Please configure your database connection in 'backend/API/config/configDB.js' 
