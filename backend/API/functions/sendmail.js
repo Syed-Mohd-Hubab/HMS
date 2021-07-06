@@ -1,12 +1,13 @@
 const nodemailer = require('nodemailer')
 
 module.exports = {
-    sendmail: function(receiver, subject, message){
+    sendmail: async function (receiver, subject, message) {
+        // console.log(process.env.EMAIL)
         // Step 1=
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: process.env.EMAIL || 'abc@gmail.com',
+                user: process.env.EMAIL || 'example@gmail.com',
                 pass: process.env.GMAIL_PASSWORD || '1234'
             }
         });
@@ -15,18 +16,18 @@ module.exports = {
         const mailOptions = {
             from: {
                 name: 'Health Care Webiste',
-                address: 'abc@gmail.com'
-            }, 
+                address: 'servicegolang078@gmail.com'
+            },
             to: receiver,
             subject: subject,
             html: message
         };
 
         // Step 3
-        transporter.sendMail(mailOptions, (error, data) => {
-            if(error){
-                return error 
-            }
-        });
+        let info = await transporter.sendMail(mailOptions);
+
+        console.log("Message sent: %s", info.messageId);
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
     }
 }

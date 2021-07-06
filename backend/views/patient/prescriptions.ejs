@@ -1,53 +1,51 @@
 <%- include('../partials/patient/header') %>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <br>
-            <div class="panel panel-default panel-table">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col col-xs-6">
-                    <h2 class="panel-title">Prescriptions:</h2>
-                  </div>
-                </div>
-              </div>
-
-              <div class="panel-body">
-                <table class="table table-striped table-bordered table-list">
-
-                  <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Department:</th>
-                        <th>Doctor:</th>
-                        <th>Time of appointment:</th>
-                        <th>Disease:</th>
-                        <th>Treatment:</th>
-                        <th>Total Fee:</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                        <% rows.forEach( (row, i) => { %>
-                        <tr>
-                            <td> <%=i+1 %> </td>
-                            <td> <%=row.department %> </td>
-                            <td> <%=row.Dname %> </td>
-                            <td><%=row.Appointment_Time.toString().slice(0, 24)%></td>
-                            <td> <%=row.Disease%> </td>
-                            <td> <%=row.Treatment%> </td>
-                            <!-- <td align="center"><a href="pay/<%=row.Appointment_id%>" class="btn btn-default" >Pay <%=row.Total_fee%></em></a></td>                         -->
-                            <td> <%=row.Total_fee%> </td>
-                        </tr>
-                        <% }) %>
-                  </tbody>
-
-                </table>
-              </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <br />
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h2 class="panel-title"><%= __("Prescriptions")%>:</h2>
             </div>
+          </div>
         </div>
+
+        <div class="panel-body">
+          <table class="table table-striped table-bordered table-list">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Department:</th>
+                <th>Doctor:</th>
+                <th>Time of appointment:</th>
+                <th>Disease:</th>
+                <th>Treatment:</th>
+                <th>Total Fee:</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% rows.forEach( (row, i) => { %>
+              <tr>
+                <td><%=i+1 %></td>
+                <td><%=row.department %></td>
+                <td><%=row.Dname %></td>
+                <td><%=row.Appointment_Time.toString().slice(0, 24)%></td>
+                <td><%=row.Disease%></td>
+                <td><%=row.Treatment%></td>
+                <!-- <td align="center"><a href="pay/<%=row.Appointment_id%>" class="btn btn-default" >Pay <%=row.Total_fee%></em></a></td>                         -->
+                <td><%=row.Total_fee%></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<%- include('../partials/footer') %> 
+<%- include('../partials/footer') %>

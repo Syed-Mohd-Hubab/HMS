@@ -1,68 +1,103 @@
 <%- include('../partials/patient/header') %>
-     <!-- PATIENT PROFILE -->
-     <section id="appointment" data-stellar-background-ratio="3">
-          <div class="container">
-               <div class="row">
-                    <div class="col-md-12 col-sm-6">
-                         <!-- PROFILE HERE -->
-                         <form id="appointment-form" role="form" method="post" action="/patient/profile" >
-                              <!-- USER NAME -->
-                              <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-                                   <h3>Hello <%=user.Fname%> <%=user.Lname%></h3>
-                              </div>
+<!-- PATIENT PROFILE -->
+<section id="appointment" data-stellar-background-ratio="3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-6">
+        <!-- PROFILE HERE -->
+        <form
+          id="appointment-form"
+          role="form"
+          method="post"
+          action="/patient/profile"
+        >
+          <!-- USER NAME -->
+          <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h3>Hello <%=user.Fname%> <%=user.Lname%></h3>
+          </div>
 
-                              <div class="wow fadeInUp" data-wow-delay="0.8s">
-                                   <input type="hidden" name="_method" value="PUT">
-                                   <div class="col-md-4 col-sm-6">
-                                        <label>First Name*</label>
-                                        <input type="text" name="fname" placeholder="First Name" value="<%=user.Fname%>" class="form-control" required>
-                                   </div>
+          <div class="wow fadeInUp" data-wow-delay="0.8s">
+            <input type="hidden" name="_method" value="PUT" />
+            <div class="col-md-4 col-sm-6">
+              <label>First Name*</label>
+              <input
+                type="text"
+                name="fname"
+                placeholder="First Name"
+                value="<%=user.Fname%>"
+                class="form-control"
+                required
+              />
+            </div>
 
-                                   <div class="col-md-4 col-sm-6">
-                                        <label>Middle Name</label>
-                                        <input type="text" name="mname" placeholder="Middle Name" value="<%=user.Mname%>" class="form-control">
-                                   </div>
+            <div class="col-md-4 col-sm-6">
+              <label>Middle Name</label>
+              <input
+                type="text"
+                name="mname"
+                placeholder="Middle Name"
+                value="<%=user.Mname%>"
+                class="form-control"
+              />
+            </div>
 
-                                   <div class="col-md-4 col-sm-6">
-                                        <label>Last Name*</label>
-                                        <input type="text"  name="lname" placeholder="Last Name" value="<%=user.Lname%>" class="form-control" required>
-                                   </div>
+            <div class="col-md-4 col-sm-6">
+              <label>Last Name*</label>
+              <input
+                type="text"
+                name="lname"
+                placeholder="Last Name"
+                value="<%=user.Lname%>"
+                class="form-control"
+                required
+              />
+            </div>
 
-                                   <!-- <div class="col-md-6 col-sm-6">
+            <!-- <div class="col-md-6 col-sm-6">
                                         <label>Email*</label>
                                         <input type="email" name="email" placeholder="Your Email"  value="<%=user.Email%>" class="form-control" required>
                                    </div> -->
 
-                                   <div class="col-md-6 col-sm-6">
-                                        <label>Birthday*</label>
-                                        <input type="date" name="dateofbirth" value="<%=user.DOB.toISOString().split('T')[0]%>" class="form-control" min="1900-01-01" max="<%=new Date().toISOString().split('T')[0]%>" required>
-                                   </div>
+            <div class="col-md-6 col-sm-6">
+              <label>Birthday*</label>
+              <input
+                type="date"
+                name="dateofbirth"
+                value="<%=user.DOB.toISOString().split('T')[0]%>"
+                class="form-control"
+                min="1900-01-01"
+                max="<%=new Date().toISOString().split('T')[0]%>"
+                required
+              />
+            </div>
 
-                                   <div class="col-md-6 col-sm-6">
-                                        <label>Select Blood Group</label>
-                                        <select name="bgroup" class="form-control">
-                                             <option id="selected"><%=user.Blood_group%></option>
-                                             <option>A+</option>
-                                             <option>B+</option>
-                                             <option>AB+</option>
-                                             <option>O+</option>
-                                             <option>A-</option>
-                                             <option>B-</option>
-                                             <option>AB-</option>
-                                             <option>O-</option>
-                                        </select>
-                                   </div>
+            <div class="col-md-6 col-sm-6">
+              <label>Select Blood Group</label>
+              <select name="bgroup" class="form-control">
+                <option id="selected"><%=user.Blood_group%></option>
+                <option>A+</option>
+                <option>B+</option>
+                <option>AB+</option>
+                <option>O+</option>
+                <option>A-</option>
+                <option>B-</option>
+                <option>AB-</option>
+                <option>O-</option>
+              </select>
+            </div>
 
-                                   <div class="col-md-6 col-sm-6">
-                                        <!-- <label>Phone Number*</label>
+            <div class="col-md-6 col-sm-6">
+              <!-- <label>Phone Number*</label>
                                         <input type="text" name="contact" placeholder="Phone" value="<%=user.Contact%>" class="form-control" onkeypress="return event.charCode > 47 && event.charCode < 58;" pattern="[0-9]+" required> -->
 
-                                        <button type="submit" class="form-control" id="cf-submit">Submit Button</button>
-                                   </div>
-                              </div>
-                        </form>
-                    </div>
-               </div>
+              <button type="submit" class="form-control" id="cf-submit">
+                <%= __("Submit Button")%>
+              </button>
+            </div>
           </div>
-     </section>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 <%- include('../partials/footer') %>

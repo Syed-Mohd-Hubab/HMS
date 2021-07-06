@@ -8,7 +8,7 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col col-xs-6">
-                    <h2 class="panel-title">Pending Appointments:</h2>
+                    <h2 class="panel-title"><%= __("Pending Appointments")%>:</h2>
                   </div>
                 </div>
               </div>
@@ -28,7 +28,7 @@
                   <tbody>
                         <% rows.forEach( (row, i) => { %>
                         <tr>
-                            <td align="center"><a href="delete/<%=row.Appointment_id%>" class="btn btn-primary" >Cancel</em></a></td>
+                            <td align="center"><a href="delete/<%=row.Appointment_id%>" class="btn btn-primary" ><%= __("Cancel")%></em></a></td>
                             <td> <%=i+1 %> </td>
                             <td> <%=row.department %> </td>
                             <td> <%=row.Message %> </td>
