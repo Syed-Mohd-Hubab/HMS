@@ -1,37 +1,58 @@
 <%- include('../partials/header') %>
-     <!-- MAKE AN APPOINTMENT -->
-     <section id="appointment" data-stellar-background-ratio="3">
-          <div class="container">
-               <div class="row">
-                    <div class="col-md-12 col-sm-6">
-                         <!-- CONTACT FORM HERE -->
-                         <form id="appointment-form" role="form" method="post" action="/authenticate/patient/login">
-
-                              <!-- SECTION TITLE -->
-                              <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-                                   <h2>Patient Sign In</h2>
-                              </div>
-                         
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="email">Email*</label>
-                                   <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
-                              </div>
-
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="password">Password*</label>
-                                   <input type="password" class="form-control" name="password" placeholder="Password" required>
-                              </div>
-
-                              <div class="col-md-3 col-sm-3">
-                                   <a href="/authenticate/forget" class="form-control">Forgot my password</a>
-                              </div>
-
-                              <div class="col-md-12 col-sm-12">
-                                   <button type="submit" class="form-control" id="cf-submit">Submit Button</button>
-                              </div>
-                         </form>
-                    </div>
-               </div>
+<!-- MAKE AN APPOINTMENT -->
+<section id="appointment" data-stellar-background-ratio="3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-6">
+        <!-- CONTACT FORM HERE -->
+        <form
+          id="appointment-form"
+          role="form"
+          method="post"
+          action="/authenticate/patient/login"
+        >
+          <!-- SECTION TITLE -->
+          <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h2><%= __("Patient Sign In")%></h2>
           </div>
-     </section>
+
+          <div class="col-md-6 col-sm-6">
+            <label for="email">Email*</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+
+          <div class="col-md-6 col-sm-6">
+            <label for="password">Password*</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <div class="col-md-3 col-sm-3">
+            <a href="/authenticate/forget" class="form-control"
+              >Forgot my password</a
+            >
+          </div>
+
+          <div class="col-md-12 col-sm-12">
+            <button type="submit" class="form-control" id="cf-submit">
+              <%= __("Submit Button")%>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 <%- include('../partials/footer') %>
